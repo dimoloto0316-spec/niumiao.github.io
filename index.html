@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛淼律师 | 游戏文娱IP法务</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B2A;
+  --navy-mid: #1E3A5F;
+  --gold: #C9A84C;
+  --gold-light: #E0C26A;
+  --white: #FFFFFF;
+  --bg-light: #F7F9FC;
+  --bg-ice: #EEF3F9;
+  --text-dark: #1A1A2E;
+  --text-mid: #4A5568;
+  --text-light: #718096;
+  --border: #E2E8F0;
+  --shadow: 0 4px 24px rgba(13,27,42,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans SC', sans-serif; color: var(--text-dark); background: var(--white); line-height: 1.6; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 64px; padding: 0 6%;
+  background: rgba(13,27,42,0.96); backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,168,76,0.18);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: 'Noto Serif SC', serif; font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: 0.03em; text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.04em; transition: color .2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 7px 18px; border-radius: 4px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  display: grid; grid-template-columns: 1fr;
+  min-height: 100vh; padding-top: 64px;
+}
+.hero-left {
+  background: var(--navy); padding: 100px 12% 100px 12%;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero-left::before {
+  content: '知识产权 版权 商标 著作权 游戏合规 出海 数据 授权 维权 仲裁 合同 诉讼';
+  position: absolute; bottom: -40px; left: -10px;
+  font-size: 8.5rem; font-family: 'Noto Serif SC', serif;
+  color: rgba(255,255,255,0.025); line-height: 1; word-break: break-all;
+  pointer-events: none; width: 130%; white-space: normal; letter-spacing: -.02em;
+}
+.hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.4rem; }
+.hero-name { font-family: 'Noto Serif SC', serif; font-size: clamp(3.2rem, 5.5vw, 5.8rem); font-weight: 700; color: #fff; line-height: 1.08; margin-bottom: 1rem; }
+.hero-role { font-size: 1.1rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-bottom: 4px; }
+.hero-firm { color: var(--gold); font-size: 0.9rem; margin-bottom: 2.4rem; letter-spacing: 0.03em; }
+.hero-desc { color: rgba(255,255,255,0.65); font-size: 0.92rem; line-height: 1.9; max-width: 460px; margin-bottom: 2.6rem; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.btn-gold { display: inline-block; background: var(--gold); color: var(--navy); padding: 13px 30px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; text-decoration: none; font-family: 'Noto Sans SC', sans-serif; transition: background .2s, transform .15s; border: none; cursor: pointer; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-outline { display: inline-block; background: transparent; color: rgba(255,255,255,0.75); padding: 13px 30px; border-radius: 4px; font-size: 0.9rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); font-family: 'Noto Sans SC', sans-serif; transition: border-color .2s, color .2s; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats { display: flex; gap: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.07); }
+.stat-val { font-family: 'Noto Serif SC', serif; font-size: 2.1rem; font-weight: 700; color: var(--gold); }
+.stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.42); letter-spacing: 0.05em; margin-top: 3px; }
+
+.hero-right {
+  background: var(--bg-ice);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero-photo {
+  width: 100%; height: 100%; min-height: 480px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem;
+  background: linear-gradient(150deg, #E8F0F8 0%, #D0E0F0 100%);
+}
+.photo-placeholder-circle { width: 130px; height: 130px; border-radius: 50%; background: rgba(13,27,42,0.1); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+.photo-hint { font-size: 0.8rem; color: var(--text-light); text-align: center; line-height: 1.6; }
+.hero-card {
+  position: absolute; bottom: 36px; right: 36px;
+  background: var(--navy); border-radius: 8px;
+  padding: 16px 22px; box-shadow: 0 10px 36px rgba(13,27,42,0.22);
+  font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.7;
+}
+.hero-card strong { display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 4px; }
+
+/* ─── TICKER ─── */
+.ticker { background: var(--gold); overflow: hidden; padding: 11px 0; }
+.ticker-track { display: flex; animation: slide 22s linear infinite; white-space: nowrap; }
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item { padding: 0 1.8rem; color: var(--navy); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; }
+.ticker-sep { color: rgba(13,27,42,0.35); }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── SECTIONS BASE ─── */
+.section { padding: 96px 8%; }
+.section-alt { background: var(--bg-light); }
+.section-dark { background: var(--navy); }
+.label { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+.label-dim { color: rgba(201,168,76,0.7); }
+.h2 { font-family: 'Noto Serif SC', serif; font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 0.9rem; }
+.h2-white { color: #fff; }
+.lead { color: var(--text-mid); font-size: 0.95rem; max-width: 560px; line-height: 1.9; margin-bottom: 3rem; }
+.lead-dim { color: rgba(255,255,255,0.55); }
+
+/* ─── SERVICES ─── */
+.services-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+.services-head .lead { margin-bottom: 0; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+.srv-card { border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; transition: border-color .25s, box-shadow .25s, transform .2s; }
+.srv-card:hover { border-color: var(--gold); box-shadow: var(--shadow); transform: translateY(-3px); }
+.srv-card.featured { border-color: var(--gold); background: linear-gradient(140deg, #FDFAF0, #FFFEF8); }
+.srv-icon { width: 46px; height: 46px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1.2rem; }
+.srv-icon.gold-bg { background: var(--gold); }
+.srv-name { font-family: 'Noto Serif SC', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+.srv-desc { font-size: 0.86rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.1rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 0.7rem; color: var(--navy-mid); background: var(--bg-ice); padding: 4px 10px; border-radius: 20px; letter-spacing: 0.02em; }
+
+/* ─── CASES ─── */
+.cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+.case-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+.case-card:hover { transform: translateY(-4px); box-shadow: 0 14px 44px rgba(13,27,42,0.13); }
+.case-top { background: var(--navy); padding: 1.4rem 1.6rem; display: flex; gap: 1rem; align-items: flex-start; }
+.case-num { font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--gold); letter-spacing: 0.12em; white-space: nowrap; margin-top: 3px; }
+.case-title { font-family: 'Noto Serif SC', serif; font-size: 0.97rem; font-weight: 600; color: #fff; line-height: 1.45; }
+.case-body { padding: 1.4rem 1.6rem; }
+.case-type { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 0.65rem; }
+.case-desc { font-size: 0.86rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem; }
+.case-result { display: flex; align-items: flex-start; gap: 8px; font-size: 0.84rem; color: var(--navy); font-weight: 500; }
+.case-result::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+
+/* ─── ABOUT ─── */
+.about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 6rem; align-items: start; }
+.about-photo-wrap { position: relative; }
+.about-photo-box { width: 100%; aspect-ratio: 3/4; background: linear-gradient(150deg, #EEF3F9, #D0E0F0); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; }
+.about-firm-tag { position: absolute; bottom: -22px; right: -18px; background: var(--navy); border-radius: 8px; padding: 14px 18px; box-shadow: 0 8px 28px rgba(13,27,42,0.18); }
+.firm-main { color: var(--gold); font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
+.firm-sub { color: rgba(255,255,255,0.42); font-size: 0.7rem; font-family: 'Inter', sans-serif; letter-spacing: 0.04em; }
+.about-bio { color: var(--text-mid); font-size: 0.93rem; line-height: 1.95; margin-bottom: 2rem; }
+.about-bio p + p { margin-top: 1rem; }
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+.cred { padding: 1.1rem 1.25rem; background: var(--bg-light); border-radius: 6px; border-left: 3px solid var(--gold); }
+.cred-label { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Inter', sans-serif; margin-bottom: 5px; }
+.cred-value { font-size: 0.88rem; color: var(--navy); font-weight: 500; line-height: 1.4; }
+
+/* ─── CONTACT ─── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+.contact-methods { display: flex; flex-direction: column; gap: 1.75rem; }
+.c-method { display: flex; gap: 1rem; align-items: flex-start; }
+.c-icon { width: 44px; height: 44px; background: rgba(201,168,76,0.14); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.c-label { font-size: 0.7rem; color: rgba(255,255,255,0.38); letter-spacing: 0.08em; font-family: 'Inter', sans-serif; margin-bottom: 4px; }
+.c-value { font-size: 0.95rem; color: #fff; font-weight: 500; }
+.c-note { font-size: 0.75rem; color: rgba(255,255,255,0.38); margin-top: 3px; }
+.qr-box { width: 96px; height: 96px; background: #fff; border-radius: 6px; margin-top: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; color: var(--text-mid); text-align: center; padding: 6px; line-height: 1.5; }
+.contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem; }
+.form-title { font-family: 'Noto Serif SC', serif; color: #fff; font-size: 1.05rem; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-bottom: 6px; letter-spacing: 0.03em; }
+.form-input, .form-textarea {
+  width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px; padding: 10px 14px; color: #fff; font-size: 0.88rem;
+  font-family: 'Noto Sans SC', sans-serif; transition: border-color .2s;
+}
+.form-input:focus, .form-textarea:focus { outline: none; border-color: var(--gold); }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-textarea { height: 98px; resize: vertical; }
+.form-submit { width: 100%; background: var(--gold); color: var(--navy); padding: 12px; border: none; border-radius: 4px; font-size: 0.92rem; font-weight: 600; cursor: pointer; font-family: 'Noto Sans SC', sans-serif; transition: background .2s; }
+.form-submit:hover { background: var(--gold-light); }
+.form-note { margin-top: 0.6rem; font-size: 0.7rem; color: rgba(255,255,255,0.25); text-align: center; }
+
+/* ─── FOOTER ─── */
+footer { background: #060E18; padding: 1.75rem 8%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-brand { font-family: 'Noto Serif SC', serif; color: rgba(255,255,255,0.4); font-size: 0.88rem; }
+.footer-brand span { color: var(--gold); }
+.footer-legal { font-size: 0.72rem; color: rgba(255,255,255,0.2); text-align: right; line-height: 1.75; }
+
+/* ─── FADE IN ─── */
+.fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+.fade.in { opacity: 1; transform: translateY(0); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 6% 56px; min-height: 85vh; }
+  .hero-right { display: none; }
+  nav .nav-links { display: none; }
+  .section { padding: 64px 6%; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-photo-wrap { max-width: 300px; }
+  .about-firm-tag { right: 0; bottom: -18px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .cred-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-legal { text-align: center; }
+}
+
+/* ─── TIMELINE ─── */
+.timeline { position: relative; margin-bottom: 3.5rem; }
+.timeline::before { content: ''; position: absolute; left: 148px; top: 6px; bottom: 0; width: 1px; background: var(--border); }
+.tl-item { display: grid; grid-template-columns: 148px 18px 1fr; margin-bottom: 2.75rem; align-items: start; }
+.tl-left { text-align: right; padding-right: 1.2rem; padding-top: 1px; }
+.tl-date { font-family: "Inter", sans-serif; font-size: 0.73rem; color: var(--text-light); letter-spacing: 0.02em; line-height: 1.5; }
+.tl-dot-wrap { display: flex; justify-content: center; padding-top: 4px; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.2); flex-shrink: 0; position: relative; z-index: 1; }
+.tl-right { padding-left: 1.2rem; }
+.tl-company { font-family: "Noto Serif SC", serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.tl-meta { font-size: 0.74rem; color: var(--gold); margin-bottom: 0.65rem; letter-spacing: 0.02em; }
+.tl-bullets { padding-left: 1rem; list-style: disc; display: flex; flex-direction: column; gap: 0.3rem; }
+.tl-bullets li { font-size: 0.84rem; color: var(--text-mid); line-height: 1.82; }
+.edu-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem; background: var(--white); border-radius: 8px; border: 1px solid var(--border); }
+.edu-section-label { font-family: "Inter", sans-serif; font-size: 0.67rem; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+.edu-school { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.edu-detail { font-size: 0.77rem; color: var(--text-mid); line-height: 1.65; }
+@media (max-width: 820px) {
+  .timeline::before { display: none; }
+  .tl-item { grid-template-columns: 0 16px 1fr; }
+  .tl-left { display: none; }
+  .edu-row { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* ─── CONTACT CARDS ─── */
+.contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.contact-big-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; display: flex; flex-direction: column; transition: border-color .25s, background .25s; }
+.contact-big-card:hover { border-color: rgba(201,168,76,0.4); background: rgba(255,255,255,0.07); }
+.cbc-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.cbc-icon { width: 48px; height: 48px; background: rgba(201,168,76,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.cbc-title { font-family: "Noto Serif SC", serif; font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.cbc-sub { font-size: 0.78rem; color: rgba(255,255,255,0.42); letter-spacing: 0.04em; }
+.cbc-badge { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); font-size: 0.76rem; padding: 5px 12px; border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.03em; }
+.cbc-qr-wrap { display: flex; justify-content: center; margin-bottom: 1rem; }
+.cbc-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-bottom: 0.75rem; }
+.cbc-secondary { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.28); padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.07); margin-top: auto; }
+.cbc-content { flex: 1; }
+.cbc-btn { text-align: center; background: var(--gold); color: var(--navy); padding: 11px; border-radius: 6px; font-size: 0.86rem; font-weight: 600; text-decoration: none; font-family: "Noto Sans SC", sans-serif; transition: background .2s; }
+.cbc-btn:hover { background: var(--gold-light); }
+.cbc-btn-blue { background: #0066FF !important; color: #fff !important; }
+.cbc-btn-blue:hover { background: #3385FF !important; }
+@media (max-width: 900px) {
+  .contact-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">牛淼<span>律师</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">业务领域</a></li>
+    <li><a href="#cases">经典案例</a></li>
+    <li><a href="#experience">执业经历</a></li>
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#contact" class="nav-cta">预约咨询</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">游戏 · 文娱 · IP · 跨境出海</div>
+    <div class="hero-name">牛淼<br>律师</div>
+    <div class="hero-role">前A股大厂法务 · 执业律师</div>
+    <div class="hero-firm">北京国樽律师事务所</div>
+    <div class="hero-desc">专注游戏文娱IP · 跨境出海合规<br>IP维权 · 出海合规 · 全流程法务支持<br><br>历经玩蟹、掌趣、昆仑万维、简游（羊了个羊）等头部公司，中英双语工作，懂行业、能诉讼、可常驻顾问。</div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">立即预约咨询</a>
+      <a href="#cases" class="btn-outline">查看经典案例</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">8+</div><div class="stat-lbl">年行业经验</div></div>
+      <div><div class="stat-val">50+</div><div class="stat-lbl">服务企业客户</div></div>
+      <div><div class="stat-val">4</div><div class="stat-lbl">核心业务板块</div></div>
+    </div>
+  </div>
+  <div class="hero-right" style="display:none;">
+    <div class="hero-photo" style="padding:0;overflow:hidden;">
+      <img src="photo.jpg" alt="牛淼律师" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+    </div>
+    <div class="hero-card">
+      <strong>核心优势</strong>
+      大厂实操经验 + 执业律师资质<br>
+      懂业务 · 能诉讼 · 可常驻顾问
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">游戏行业全流程法务</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">知识产权全域布局与维权</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">跨境出海合规</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">文娱文创IP法务</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">企业常年法律顾问</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">版号内容风控</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">海外IP维权</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">数据隐私合规 GDPR</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">商标异议 · 无效宣告</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">著作权侵权诉讼</span><span class="ticker-item ticker-sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">游戏行业全流程法务</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">知识产权全域布局与维权</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">跨境出海合规</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">文娱文创IP法务</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">企业常年法律顾问</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">版号内容风控</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">海外IP维权</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">数据隐私合规 GDPR</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">商标异议 · 无效宣告</span><span class="ticker-item ticker-sep">·</span>
+    <span class="ticker-item">著作权侵权诉讼</span><span class="ticker-item ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section fade" id="services">
+  <div class="services-head">
+    <div>
+      <div class="label">业务领域</div>
+      <div class="h2">专注垂直赛道<br>深度服务企业客户</div>
+    </div>
+    <div class="lead" style="margin-bottom:0;max-width:420px;">
+      不做大而全的通用法律服务。只做游戏、文娱、IP、出海——这四个真正深耕、能帮企业解决实际问题的领域。
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="srv-card">
+      <div class="srv-icon">🎮</div>
+      <div class="srv-name">游戏行业全流程法务</div>
+      <div class="srv-desc">从研发到运营，提供全链条法律覆盖。熟悉版号申请、游戏内容合规、玩家争议处理及研发外包合同，具备大厂实战经验。</div>
+      <div class="tags">
+        <span class="tag">合同审核/起草</span><span class="tag">研发运营合规</span>
+        <span class="tag">版号风控</span><span class="tag">玩家投诉处理</span>
+      </div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">⚖️</div>
+      <div class="srv-name">知识产权全域布局与维权</div>
+      <div class="srv-desc">商标、版权、软著一站式布局，全网侵权监测+批量维权体系搭建，商标异议/无效、侵权诉讼均有标杆案例。</div>
+      <div class="tags">
+        <span class="tag">商标/版权/软著</span><span class="tag">全网侵权监测</span>
+        <span class="tag">批量维权</span><span class="tag">侵权诉讼</span>
+      </div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🌐</div>
+      <div class="srv-name">跨境出海合规与涉外法务</div>
+      <div class="srv-desc">稀缺的涉外法务能力。覆盖多国产品上线合规、数据隐私（GDPR等）、英文合同及海外IP维权，助力企业降低出海法律风险。</div>
+      <div class="tags">
+        <span class="tag">海外产品合规</span><span class="tag">数据隐私/GDPR</span>
+        <span class="tag">英文合同</span><span class="tag">平台风控应对</span>
+      </div>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🎬</div>
+      <div class="srv-name">文娱文创IP法务</div>
+      <div class="srv-desc">覆盖潮玩、短剧、影视、艺人经纪。IP授权合作、内容合规审核、版权交易及艺人合同争议，均具备实操经验。</div>
+      <div class="tags">
+        <span class="tag">IP授权合作</span><span class="tag">内容合规</span>
+        <span class="tag">版权交易</span><span class="tag">影视项目法务</span>
+      </div>
+    </div>
+    <div class="srv-card featured">
+      <div class="srv-icon gold-bg">🤝</div>
+      <div class="srv-name">企业常年法律顾问（行业专属版）</div>
+      <div class="srv-desc">为游戏、文娱、出海企业提供替代全职法务的专属顾问服务。按需调用，覆盖日常合同、合规咨询、突发争议响应，性价比远优于自招法务。</div>
+      <div class="tags">
+        <span class="tag">日常合规咨询</span><span class="tag">合同管理</span>
+        <span class="tag">突发争议响应</span><span class="tag">法务外包</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="section section-alt fade" id="cases">
+  <div class="label">经典案例</div>
+  <div class="h2">标杆项目，结果说话</div>
+  <div class="lead">4个经典案例，覆盖核心业务线，每一个都有可量化的落地成果。</div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-num">CASE 01</div>
+        <div class="case-title">《羊了个羊》全域知识产权维权项目</div>
+      </div>
+      <div class="case-body">
+        <div class="case-type">游戏IP维权 · 批量维权体系</div>
+        <div class="case-desc">针对爆款游戏遭受的大规模侵权，主导搭建全域监测与批量维权闭环，覆盖应用商店、短视频平台、电商平台多渠道侵权清除。</div>
+        <div class="case-result">维权闭环体系搭建完成，多平台协同清除侵权，实现持续监控</div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-num">CASE 02</div>
+        <div class="case-title">《拳皇98》换皮抄袭著作权侵权及不正当竞争案</div>
+      </div>
+      <div class="case-body">
+        <div class="case-type">游戏诉讼 · 著作权 · 不正当竞争</div>
+        <div class="case-desc">代理方主张被告游戏构成对《拳皇98》的实质性相似，参与完成技术鉴定、证据固定及庭审全流程，最终取得胜诉判决。</div>
+        <div class="case-result">胜诉，获百万级赔偿，成为行业标杆案例</div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-num">CASE 03</div>
+        <div class="case-title">昆仑万维全球产品合规与出海风控项目</div>
+      </div>
+      <div class="case-body">
+        <div class="case-type">跨境出海 · 数据合规 · 多国法律</div>
+        <div class="case-desc">服务于头部出海企业昆仑万维，负责多款全球产品上线合规审查、GDPR及各国数据隐私合规、平台监管应对及涉外合同管理。</div>
+        <div class="case-result">覆盖多个国家及地区，建立系统性合规框架，持续降低出海法律风险</div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-num">CASE 04</div>
+        <div class="case-title">头部文娱公司艺人IP争议与常年法律顾问</div>
+      </div>
+      <div class="case-body">
+        <div class="case-type">文娱法务 · 艺人经纪 · 常年顾问</div>
+        <div class="case-desc">担任头部文娱公司常年法律顾问，处理艺人合同纠纷、IP授权争议及影视项目全流程法律事务，涵盖合同起草、谈判与争议解决。</div>
+        <div class="case-result">多起争议妥善解决，持续服务多年，构建稳定法务支持体系</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section fade" id="about">
+  <div class="about-grid">
+    <div class="about-photo-wrap">
+      <div class="about-photo-box" style="padding:0;overflow:hidden;">
+        <img src="photo.jpg" alt="牛淼律师" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+      </div>
+      <div class="about-firm-tag">
+        <div class="firm-main">北京国樽律师事务所</div>
+        <div class="firm-sub">NIU MIAO · Attorney at Law</div>
+      </div>
+    </div>
+    <div>
+      <div class="label">关于我</div>
+      <div class="h2" style="margin-bottom:1.5rem;">律师执照 + 大厂法务<br>两种视角，一个团队</div>
+      <div class="about-bio">
+        <p>我是牛淼，执业律师，北京国樽律师事务所执业，具备法律职业资格证书，中英双语工作。中国政法大学涉外法学人才培养实验班法学学士，中国人民大学上市公司董秘高级管理课程学员。</p>
+        <p>从2017年起，我历经玩蟹科技、掌趣科技（A股上市）、北京市安理律师事务所（娱乐法律师杨曙光团队）、昆仑万维旗下昆仑天工、简游科技（羊了个羊）等头部机构，覆盖法务、律师、一人法务多种角色，深度参与游戏发行、出海合规、IP维权、艺人经纪、投融资等全链条法律事务。</p>
+        <p>我既有庭审诉讼经验，也有大厂业务BP支持和合规制度建设的实操积累。北京市律师协会会员，北京文化娱乐法学会会员。我的目标是成为游戏、文娱、出海企业真正可信赖的法律伙伴——懂你的行业，随时能响应，出了事能上庭。</p>
+      </div>
+      <div class="cred-grid">
+        <div class="cred"><div class="cred-label">执业机构</div><div class="cred-value">北京国樽律师事务所</div></div>
+        <div class="cred"><div class="cred-label">深耕领域</div><div class="cred-value">游戏 · 文娱 · IP · 出海</div></div>
+        <div class="cred"><div class="cred-label">行业背景</div><div class="cred-value">前头部互联网/游戏公司全职法务</div></div>
+        <div class="cred"><div class="cred-label">从业经验</div><div class="cred-value">8年以上</div></div>
+      </div>
+      <a href="#contact" class="btn-gold">与我预约咨询</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section class="section section-alt fade" id="experience">
+  <div class="label">执业经历</div>
+  <div class="h2">八年 · 五家头部机构</div>
+  <div class="lead">从律所到A股上市公司法务，再到爆款游戏一人法务，覆盖争议解决、合规、IP维权、出海法务全链条。</div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-date">2024.5<br>至今</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-company">北京简游科技有限公司（产品：羊了个羊）</div>
+        <div class="tl-meta">一人法务（全线法律负责人）</div>
+        <ul class="tl-bullets">
+          <li>独立负责全线法律事务，全年审核起草合同近200份，涵盖节目植入、艺人代言、MCN推广等多业务场景，建立合同配合流程机制</li>
+          <li>主导"羊了个羊"品牌知识产权维权诉讼，构建诉讼→投诉→和解→模板复用的维权闭环，管理Google Play、淘宝等国内外平台侵权投诉流程</li>
+          <li>主导设计"AI合规问问"智能助手，搭建可持续知识库迭代机制，推进低感知业务风险自查系统</li>
+          <li>支持出海架构设计（新加坡+信托）、财税需求配合及合同架构创新，参与公司治理及投融资法律支持</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-date">2022.4<br>2024.5</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-company">北京昆仑天工科技有限公司（昆仑万维集团旗下，A股上市）</div>
+        <div class="tl-meta">法务</div>
+        <ul class="tl-bullets">
+          <li>主导全球产品全流程合规，覆盖赌博、洗钱、儿童保护、数据保护等核心合规议题，处理欧美、东南亚、印度等多地区涉警调查及平台监管应对</li>
+          <li>对内形成业务法务配合操作指引及SOP，对外形成《平台执法配合指南》，实现合规经验的系统化沉淀</li>
+          <li>全程处理人事部门日常及高危突发咨询，主导劳动争议仲裁应诉，推进劳动合同、员工手册、竞业限制等人事合规制度建设</li>
+          <li>支持社交产品app发行运营各环节合同需求，覆盖美国、新加坡、印度、墨西哥等国家的海外用工法律支持</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-date">2021.9<br>2022.3</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-company">北京掌趣科技股份有限公司（A股上市，产品：奇迹MU、一拳超人）</div>
+        <div class="tl-meta">法务</div>
+        <ul class="tl-bullets">
+          <li>原法务部均离职情况下一人承接全部法务工作，独立支撑游戏研发及国内外发行业务全线法律需求</li>
+          <li>形成台湾地区游戏发行法律风险报告，成功提示业务风险并推动业务模式调整</li>
+          <li>定期梳理重大游戏项目合同核心条款及履行情况，建立合同后续履行监督与风险预警机制</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-date">2018.9<br>2021.8</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-company">北京市安理律师事务所</div>
+        <div class="tl-meta">知名娱乐法律师杨曙光律师团队 · 律师</div>
+        <ul class="tl-bullets">
+          <li>协办代理艺人卜凡、姜贞羽、文淇等多位艺人诉经纪公司合同解除案，均为艺人争取到成功解约且解约金较低的有利结果</li>
+          <li>独立负责杨迪工作室、张翰工作室、哇唧唧哇娱乐（天津）等公司常年法律顾问服务，提供日常合同审核、律师函及法律风险培训</li>
+          <li>参与主办著作权资产收购项目、东方资产广州银行不良资产收购尽调、某公司科创板上市知识产权风险分析等专项项目</li>
+          <li>提供多部影视剧筹备、投资、摄制、宣发等全流程专项法律服务</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-date">2017.8<br>2018.9</div></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-company">北京玩蟹科技有限公司（掌趣集团旗下，A股上市，产品：大掌门）</div>
+        <div class="tl-meta">法务</div>
+        <ul class="tl-bullets">
+          <li>主导《拳皇98》换皮抄袭著作权侵权及不正当竞争案（(2017)京0108民初29139号），通过游戏内客服线索成功追加背后支持公司为被告，增加胜诉可执行款项</li>
+          <li>商标权案件胜诉[(2017)京0108民初15897号]，侵权方赔偿100万并赔礼道歉</li>
+          <li>刑事关联民事案件成功获赔财产损失877,750元，仲裁案件成功确认渠道近百万欠款</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="edu-row">
+    <div>
+      <div class="edu-section-label">教育背景</div>
+      <div>
+        <div class="edu-school">中国政法大学</div>
+        <div class="edu-detail">涉外法学人才培养实验班 · 法学学士 &nbsp;|&nbsp; 2013 – 2017</div>
+      </div>
+      <div style="margin-top:1rem;">
+        <div class="edu-school">中国人民大学</div>
+        <div class="edu-detail">上市公司董秘高级管理课程 · 学员 &nbsp;|&nbsp; 2023 – 2024</div>
+      </div>
+    </div>
+    <div>
+      <div class="edu-section-label">专业资格 &amp; 社会组织</div>
+      <div>
+        <div class="edu-school">法律职业资格证书</div>
+        <div class="edu-detail">国家统一法律职业资格考试通过 &nbsp;|&nbsp; 工作语言：中文、英文</div>
+      </div>
+      <div style="margin-top:1rem;">
+        <div class="edu-school">北京市律师协会 &nbsp;·&nbsp; 北京文化娱乐法学会</div>
+        <div class="edu-detail">会员</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-dark fade" id="contact">
+  <div class="label label-dim">联系我</div>
+  <div class="h2 h2-white">3种方式找到我</div>
+  <div class="lead lead-dim" style="margin-bottom:3.5rem;">直接来，不用客气。每天有<span style="color:var(--gold);font-weight:600;">两个免费咨询名额</span>，先到先得。</div>
+
+  <div class="contact-cards">
+
+    <!-- WeChat Personal -->
+    <div class="contact-big-card">
+      <div class="cbc-top">
+        <div class="cbc-icon">💬</div>
+        <div>
+          <div class="cbc-title">加微信咨询</div>
+          <div class="cbc-sub">工作微信 · 直接沟通</div>
+        </div>
+      </div>
+      <div class="cbc-badge">🎯 每天2个免费咨询名额，先到先得</div>
+      <div class="cbc-qr-wrap">
+        <img src="wechat-personal.jpg" alt="微信二维码" style="width:200px;height:200px;border-radius:12px;display:block;margin:0 auto;">
+      </div>
+      <div class="cbc-note">扫码添加 · 请备注：公司 + 姓名 + 需求</div>
+      <div class="cbc-secondary">📞 131 2666 1382 &nbsp;·&nbsp; ✉️ niumiao@guozunlaw.com</div>
+    </div>
+
+    <!-- WeChat Public Account -->
+    <div class="contact-big-card">
+      <div class="cbc-top">
+        <div class="cbc-icon">📖</div>
+        <div>
+          <div class="cbc-title">微信公众号</div>
+          <div class="cbc-sub">牛律师 IP 与出海</div>
+        </div>
+      </div>
+      <div class="cbc-badge">📝 定期更新行业法律干货</div>
+      <div class="cbc-content">
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:1.5rem;">
+          游戏发行合规 · 出海法律风险 · IP维权实操<br>
+          艺人经纪争议 · 数据隐私 · 行业政策解读<br><br>
+          企业决策层和法务人必读，干货不水文。
+        </p>
+        <div style="text-align:center;">
+          <img src="wechat-public.jpg" alt="公众号二维码" style="width:200px;height:200px;border-radius:12px;display:block;margin:0 auto 0.75rem;">
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.38);">扫码关注「牛律师 IP 与出海」</div>
+        </div>
+      </div>
+      <a href="https://mp.weixin.qq.com" target="_blank" class="cbc-btn" style="display:block;margin-top:1.5rem;">扫码关注 →</a>
+    </div>
+
+    <!-- Zhihu -->
+    <div class="contact-big-card">
+      <div class="cbc-top">
+        <div class="cbc-icon" style="background:#0066FF;font-size:1.1rem;font-weight:700;font-family:'Noto Serif SC',serif;">知</div>
+        <div>
+          <div class="cbc-title">知乎专栏</div>
+          <div class="cbc-sub">@牛律师</div>
+        </div>
+      </div>
+      <div class="cbc-badge">💡 专业内容 · 可被搜索</div>
+      <div class="cbc-content">
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:1.5rem;">
+          在知乎分享游戏法务、出海合规、IP维权的专业内容，每篇文章都能被搜索引擎收录。<br><br>
+          搜索「游戏法务」「出海合规」「IP维权」等关键词，可以找到我写的文章。
+        </p>
+        <div style="background:rgba(0,102,255,0.1);border:1px solid rgba(0,102,255,0.25);border-radius:8px;padding:1.25rem;text-align:center;">
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:6px;letter-spacing:0.08em;">关注获取最新内容</div>
+          <div style="font-size:1rem;color:#6EB3FF;font-weight:600;">知乎 · 牛律师 IP 与出海</div>
+        </div>
+      </div>
+      <a href="https://www.zhihu.com/people/niu-miao-19" target="_blank" class="cbc-btn cbc-btn-blue" style="display:block;margin-top:1.5rem;">访问知乎主页 →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">牛淼<span>律师</span> · 游戏文娱IP法务</div>
+  <div class="footer-legal">
+    执业律所：北京国樽律师事务所 &nbsp;·&nbsp; 律师执业证号：11101202011223631<br>
+    © 2025 牛淼律师 &nbsp;·&nbsp; 保留所有权利
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+// Nav smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+// Form submit
+document.getElementById('formBtn').addEventListener('click', function() {
+  const fields = ['f-company','f-need','f-contact'];
+  const empty = fields.some(id => !document.getElementById(id).value.trim());
+  if (empty) { alert('请填写所有必填项'); return; }
+  this.textContent = '✓ 已提交，1个工作日内回复';
+  this.style.background = '#3aaa6a';
+  this.style.color = '#fff';
+  this.disabled = true;
+});
+</script>
+</body>
+</html>
